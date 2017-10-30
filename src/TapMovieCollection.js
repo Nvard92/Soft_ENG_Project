@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Swiper from 'swiper'
+import Swiper from 'swiper/dist/js/swiper.min'
 import 'swiper/dist/css/swiper.min.css'
 import './TapMovieCollection.css'
 import TapMovieCard from './TapMovieCard'
