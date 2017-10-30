@@ -1,0 +1,58 @@
+h1 {
+	color: red;
+}
+
+div.registrForm
+{
+    width: 50%;
+	display: inline-block;
+	
+}
+
+
+div.profile {
+	background-color:#252333;
+
+}
+
+
+div.profilePhoto {
+	display: block;
+	margin: auto;
+	margin-top : 50px;
+	padding-top: 50px;
+
+	width: 20%;
+	}
+
+div.menuBar
+{
+
+
+	border: solid ;
+
+}
+
+
+div.shows
+{ margin-left: 25%;
+background-color: #d1ceca;
+	border-radius: 5px;
+	 }
+
+div.movies
+{
+	margin-left: 25%;
+	background-color: #d1ceca;
+	border-radius: 5px;
+
+}
+div.home
+{
+	margin-left:15%;
+	background-color: #d1ceca;
+	border-radius: 5px;
+}
+
+     
+     
