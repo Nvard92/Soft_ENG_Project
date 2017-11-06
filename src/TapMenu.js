@@ -24,7 +24,7 @@ class TapMenu extends Component {
                 <div className='item'>
                     <Image src={logo}  size='small'/>
                 </div>
-                <a className='browse item' onmouseover={() => { this.openMovies()}}>
+                <a className='browse item' onMouseOver={() => { this.openMovies()}}>
                     Movie
                 </a>
             </div>
