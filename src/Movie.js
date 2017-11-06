@@ -4,7 +4,7 @@ import TapMenu from './TapMenu'
 import TapFooter from './TapFooter'
 import TapMovieCollection from './TapMovieCollection'
 import TapSidebarCollection from './TapSidebarCollection'
-import { Segment, Grid, Sticky, Item } from 'semantic-ui-react'
+import { Segment, Grid, Sticky, Item, Image } from 'semantic-ui-react'
 import _ from 'lodash'
 import $ from 'jquery'; 
 import {
@@ -14,17 +14,19 @@ import NotFound from './NotFound'
 
 import { Button, Icon } from 'semantic-ui-react'
 
-class Movies extends Component {
+class Movie extends Component {
 
   constructor(props) {
     super(props);
 
-    this.state = {movie: [],
+    this.state = {movie: {URL: 'https://resizing.flixster.com/aJZN0ldw_MkUfzfU8mR6McoovG0=/206x305/v1.bTsxMjU2MjE4MDtqOzE3NTE1OzEyMDA7NTE1MDs3NjA2', 
+                          name: 'Blind'
+                           },
       notFound: false
     };
   }
 
-  componentDidMount()
+  /*componentDidMount()
   {
     $.getJSON('https://randomuser.me/api/asd')
     .done(({ results }) => this.setState({ movie: results }))
@@ -38,13 +40,11 @@ class Movies extends Component {
       }
     }.bind(this)
     );
-  }
+  }*/
 
   
 
-    state = {}
-
-    handleContextRef = contextRef => this.setState({ contextRef })
+   
 
   render() {
 
@@ -55,22 +55,18 @@ class Movies extends Component {
       );
     }
 
-    const movies = this.state.movie.map((item, i) => (
-      <div>
-        <h1>{ item.name.first }</h1>
-        <span>{ item.cell }, { item.email }</span>
-      </div>
-    ));
+   
 
     return (
       <div >
             <h3>
                 Movie {this.props.match.params.movieId.toString()}
-            </h3>
-            <div className="panel-list">{ movies }</div>
+            </h3> 
+
+             <Image src={this.state.movie.URL} size='medium' rounded /> 
       </div>
     );
   }
 }
 
-export default Movies;
+export default Movie;

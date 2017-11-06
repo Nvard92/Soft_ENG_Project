@@ -20,12 +20,12 @@ import {
 import { Button, Icon } from 'semantic-ui-react'
 
 class App extends Component {
-    state = {}
+   
 
-    handleContextRef = contextRef => this.setState({ contextRef })
+
 
   render() {
-      const { contextRef } = this.state
+      
     return (
           <Router>
       <div className="App">
@@ -33,10 +33,12 @@ class App extends Component {
           <Segment className='stackable container mainContent'>
             <Switch>
                 <Route exact path="/" component={Home}/>
+                <Route exact path="/home" component={Home}/>
                 <Route exact path="/movies" component={Movies}/>
                 <Route exact path="/movies/:movieId" component={Movie}/>
                 <Route exact component={NotFound} />
-              </Switch>
+                </Switch>
+             
           </Segment>
 
           <TapFooter/>

@@ -9,7 +9,7 @@ import _ from 'lodash'
 
 import { Button, Icon } from 'semantic-ui-react'
 
-class Movie extends Component {
+class Movies extends Component {
     state = {}
 
     handleContextRef = contextRef => this.setState({ contextRef })
@@ -26,4 +26,4 @@ class Movie extends Component {
   }
 }
 
-export default Movie;
+export default Movies;
