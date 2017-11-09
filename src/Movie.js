@@ -63,7 +63,8 @@ class Movie extends Component {
                 Movie {this.props.match.params.movieId.toString()}
             </h3> 
 
-             <Image src={this.state.movie.URL} size='medium' rounded /> 
+             <Image src={this.state.movie.URL 
+                        } size='medium' rounded /> 
       </div>
     );
   }
