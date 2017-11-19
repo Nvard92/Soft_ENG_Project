@@ -6,7 +6,8 @@ class TapFooter extends Component {
 
     render() {
         return (
-            <Segment inverted className='container footer' color='grey'>
+            <Segment inverted className='container footer' >
+            © 2017 TAPMOVIE ALL RIGHTS RESERVED
             </Segment>
         );
     }

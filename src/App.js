@@ -18,6 +18,11 @@ import {
   import NotFound from './NotFound'
   import Movie from './Movie'
   import Register from './Register'
+  import Login from  './Login'
+  
+
+
+ 
   
 
 
@@ -41,11 +46,14 @@ class App extends Component {
                 <Route exact path="/movies" component={Movies}/>
                 <Route exact path="/movies/:movieId" component={Movie}/>
                 <Route exact path="/registration" component={Register}/>
-                
+                <Route exact path="/login" component={Login}/>
+            
+               
                 <Route exact component={NotFound} />
 
 
                 </Switch>
+                }
              
           </Segment>
 

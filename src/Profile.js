@@ -10,9 +10,19 @@ class Profile extends Component {
      
     return (
       
-<div>
-haha
-</div>
+<div className="profilePhoto">
+ <ImagesUploader
+                url="http://localhost:9090/notmultiple"
+                optimisticPreviews
+                multiple={false}
+                onLoadEnd={(err) => {
+                    if (err) {
+                        console.error(err);
+                    }
+                }}
+                label="Upload a picture"
+                />
+                </div>
 
                 
 
