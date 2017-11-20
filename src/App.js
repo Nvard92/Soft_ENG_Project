@@ -20,10 +20,7 @@ import {
 import { Button, Icon } from 'semantic-ui-react'
 
 class App extends Component {
-   
-
-
-
+      
   render() {
       
     return (
