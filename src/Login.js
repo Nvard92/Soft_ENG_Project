@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Segment, Form } from 'semantic-ui-react';
+import { Button, Segment, Form, View } from 'semantic-ui-react';
 import './Login.css';
 
 
@@ -19,8 +19,9 @@ class Login extends Component{
 
 	render(){
 		return (
-			<div>
-			<Segment inverted>
+			<div style={{display: 'flex', justifyContent: 'center',}}>
+			<Segment inverted style={{ width: '50%'}}>
+			
 
 				<Form id="loginForm" onSubmit={this.submit.bind(this)} inverted>
 
@@ -35,6 +36,7 @@ class Login extends Component{
 					
 					<Button type='submit'> Log In </Button>
 				</Form>
+			
 
 			</Segment>
 		</div>
