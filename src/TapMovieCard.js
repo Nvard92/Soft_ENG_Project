@@ -5,14 +5,18 @@ class TapMovieCard extends Component {
 
     static defaultProps = {
         url : '',
-        rt: 0
+        rt: 0,
+        releaseDate:'',
+        descriptionEng:''
+
     };
 
     constructor(props){
         super(props);
 
         this.state = {
-            shoulldOpenMovies: true
+            shoulldOpenMovies: true,
+              link:"/movies/"+this.props.id
         };
     }
 
@@ -24,20 +28,20 @@ class TapMovieCard extends Component {
 
     render() {
         return (
-            <Card>
-                <Image src={this.props.url} />
+            <Card href={this.state.link} >
+                <Image src={this.props.posterUrl} />
                 <Card.Content>
                     <Card.Header>
-                        Star Wars: The Last Jedi
+                        {this.props.name}
                     </Card.Header>
                     <Card.Meta>
                         <span className='date'>
-                            2017
+                            {this.props.releaseDate}
                         </span>
                     </Card.Meta>
                     <Card.Description>
-                        Rian Johnson (Brick, Looper) writes and directs this installment of the Star Wars saga for Disney and Lucasfilm. ~ Jason Buchanan, Rovi.
-                    </Card.Description>
+                       {this.props.descriptionEng}
+                         </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                     <a>

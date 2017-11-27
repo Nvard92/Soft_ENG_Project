@@ -43,7 +43,7 @@ class TapMovieItemCollection extends Component {
         for (var i = 0; i < this.state.movies.length; i++) {
             indents.push(
                 <div className='swiper-slide' >
-                    <TapMovieItem name={this.state.movies[i].name} id={this.state.movies[i].id}></TapMovieItem>
+                    <TapMovieItem name={this.state.movies[i].name} source={this.props.source} id={this.state.movies[i].id}></TapMovieItem>
                 </div>
             );
         }

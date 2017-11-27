@@ -11,7 +11,8 @@ import {
   Route
 } from 'react-router-dom';
 import NotFound from './NotFound'
-
+import TapConfig from './Config'
+import TapMovieItemCollection from './TapMovieItemCollection'
 class Movie extends Component {
 
   constructor(props) {
@@ -19,26 +20,40 @@ class Movie extends Component {
 
     this.state = {movie: {URL: 'https://resizing.flixster.com/aJZN0ldw_MkUfzfU8mR6McoovG0=/206x305/v1.bTsxMjU2MjE4MDtqOzE3NTE1OzEyMDA7NTE1MDs3NjA2', 
                           name: 'Blind'
-                           },
+                           }, actors:{}, directors:{}, writers:{}, producers:{},
       notFound: false
     };
   }
 
-  /*componentDidMount()
-  {
-    $.getJSON('https://randomuser.me/api/asd')
-    .done(({ results }) => this.setState({ movie: results }))
-    .fail(function( jqxhr, textStatus, error ) {
-      if (error.indexOf("404") >=0) {
-        this.setState({ notFound: true })
-      }
-      else {
-        var err = textStatus + ", " + error;
-        console.log( "Request Failed: " + err );
-      }
-    }.bind(this)
-    );
-  }*/
+
+    componentDidMount()
+    {
+        this.getMovieInfo();
+     
+    }
+
+    getMovieInfo()
+    {
+        $.getJSON( TapConfig.apiURL + '/movies/'+this.props.match.params.movieId)
+            .done(function( data) {
+                this.setState({ movie: data[0] })
+                this.setState({actors:data[0].actors})
+                this.setState({directors:data[0].directors})
+                this.setState({producers:data[0].producers})
+                this.setState({writers:data[0].writers})
+                console.log(this.state.movie);
+            }.bind(this))
+            .fail(function( jqxhr, textStatus, error ) {
+                    if (error.indexOf("404") >=0) {
+                        this.setState({ notFound: true })
+                    }
+                    else {
+                        var err = textStatus + ", " + error;
+                        console.log( "Request Failed: " + err );
+                    }
+                }.bind(this)
+            );
+    }
 
   
 
@@ -58,11 +73,11 @@ class Movie extends Component {
     return (
         <Item.Group>
           <Item >
-            <Item.Image src={this.state.movie.URL} />
+            <Item.Image src={this.state.movie.posterUrl} />
 
             <Item.Content>
               <Item.Header>
-                Movie {this.props.match.params.movieId.toString()}
+               {this.state.movie.nameEng}
               </Item.Header>
               <Item.Description>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, consectetur cum delectus dolor dolorem
@@ -90,7 +105,43 @@ class Movie extends Component {
               </Item.Description>
             </Item.Content>
           </Item>
-        </Item.Group>
+
+
+                           {this.state.actors.length > 0 &&
+                       <Grid.Row>
+                      <Grid.Column mobile={16} fablet={8} computer={6}>
+                        <h3>
+                              Acted in({this.state.actors.length})
+                          </h3>
+                          <TapMovieItemCollection movies={this.state.actors} source="persons"/>
+                          </Grid.Column>
+                          </Grid.Row>
+                            }
+                           {this.state.producers.length > 0 &&
+                      <Grid.Row>
+                     
+                      <Grid.Column mobile={16} fablet={8} computer={6}>
+                        <h3>
+                              Producer in({this.state.producers.length})
+                          </h3>
+                          <TapMovieItemCollection movies={this.state.producers} source="persons"/>
+                          </Grid.Column>
+                          </Grid.Row>
+                          }
+                           {this.state.directors.length > 0 &&
+                             <Grid.Row>
+                      <Grid.Column mobile={16} fablet={8} computer={6}>
+                        <h3>
+                              Director in({this.state.directors.length})
+                          </h3>
+                          <TapMovieItemCollection movies={this.state.directors} source="persons"/>
+                          </Grid.Column>
+                          </Grid.Row>
+                        }
+
+                         
+                                </Item.Group>
+
     );
   }
 }

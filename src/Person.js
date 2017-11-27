@@ -103,7 +103,7 @@ class Person extends Component {
 
           </Item>
 
-                           {this.state.producer.actor > 0 &&
+                           {this.state.actor.length > 0 &&
                        <Grid.Row>
                       <Grid.Column mobile={16} fablet={8} computer={6}>
                         <h3>

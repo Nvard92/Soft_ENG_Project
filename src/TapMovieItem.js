@@ -5,14 +5,15 @@ class TapMovieItem extends Component {
 
     static defaultProps = {
         name : '',
-        id: 0
+        id: 0,
+        source: 'movies'
         };
 
     constructor(props){
         super(props);
         this.state = {
             shoulldOpenMovies: true,
-            link:"/movies/"+this.props.id
+            link:"/"+this.props.source+"/"+this.props.id
         };
     }
 

@@ -31,9 +31,10 @@ class App extends Component {
 
     getMovies()
     {
-        $.getJSON( TapConfig.apiURL + '/movies/')
+        $.getJSON( TapConfig.apiURL + '/movies/?filter=rating')
             .done(function( data) {
                 this.setState({ movies: data })
+                console.log(this.state.movies);
             }.bind(this))
             .fail(function( jqxhr, textStatus, error ) {
                     if (error.indexOf("404") >=0) {
