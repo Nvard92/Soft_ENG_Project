@@ -6,30 +6,82 @@ import TapMovieCollection from './TapMovieCollection'
 import TapSidebarCollection from './TapSidebarCollection'
 import { Segment, Grid, Sticky, Item } from 'semantic-ui-react'
 import _ from 'lodash'
+import $ from 'jquery'
+import TapConfig from './Config'
+
 
 import { Button, Icon } from 'semantic-ui-react'
 
 class App extends Component {
-    state = {}
+    constructor(props)
+    {
+        super(props);
 
-    handleContextRef = contextRef => this.setState({ contextRef })
+        this.state = {
+            movies: [],
+            shows: []
+        };
+    }
+
+    componentDidMount()
+    {
+        this.getMovies();
+        this.getShows();
+    }
+
+    getMovies()
+    {
+        $.getJSON( TapConfig.apiURL + '/movies/')
+            .done(function( data) {
+                this.setState({ movies: data })
+            }.bind(this))
+            .fail(function( jqxhr, textStatus, error ) {
+                    if (error.indexOf("404") >=0) {
+                        this.setState({ notFound: true })
+                    }
+                    else {
+                        var err = textStatus + ", " + error;
+                        console.log( "Request Failed: " + err );
+                    }
+                }.bind(this)
+            );
+    }
+
+    getShows()
+    {
+        $.getJSON( TapConfig.apiURL + '/movies/')
+            .done(function( data) {
+                this.setState({ movies: data })
+            }.bind(this))
+            .fail(function( jqxhr, textStatus, error ) {
+                    if (error.indexOf("404") >=0) {
+                        this.setState({ notFound: true })
+                    }
+                    else {
+                        var err = textStatus + ", " + error;
+                        console.log( "Request Failed: " + err );
+                    }
+                }.bind(this)
+            );
+    }
+
 
   render() {
-      const { contextRef } = this.state
+        // alert(this.state.movies.length);
     return (
               <Grid divided>
                   <Grid.Row>
                       <Grid.Column mobile={16} fablet={8} computer={6}>
                           <h3>
-                              Movies
+                              Movies({this.state.movies.length})
                           </h3>
-                          <TapMovieCollection/>
+                          <TapMovieCollection movies={this.state.movies}/>
                       </Grid.Column>
                       <Grid.Column mobile={16} fablet={8} computer={6}>
                           <h3>
                               TV Shows
                           </h3>
-                          <TapMovieCollection/>
+                          <TapMovieCollection movies={this.state.shows}/>
                       </Grid.Column>
                       <Grid.Column mobile={16} fablet={8} computer={4}>
                               <Item.Group divided>

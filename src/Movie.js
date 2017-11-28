@@ -56,7 +56,11 @@ class Movie extends Component {
    
 
     return (
-     <Item.Group>
+
+   
+
+        <Item.Group>
+
           <Item >
             <Item.Image src={this.state.movie.URL} />
 
@@ -64,7 +68,8 @@ class Movie extends Component {
               <Item.Header>
                 Movie {this.props.match.params.movieId.toString()}
               </Item.Header>
-              <div id ="description" style={{ width: "85%", }}>
+
+             
               <Item.Description >
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. 
                 Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
@@ -80,7 +85,32 @@ class Movie extends Component {
                     ed consequat, leo eget bibendum sodales, augue velit cursus nunc,
                 
               </Item.Description>
-              </div>
+              
+              <Item.Description>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, consectetur cum delectus dolor dolorem
+                dolorum earum eius ex impedit labore magni mollitia neque nihil omnis, quas quidem, reiciendis saepe voluptates?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor error illum minus necessitatibus nemo
+                nisi perferendis quibusdam rem temporibus. Aliquam ducimus eius hic nihil quas. A adipisci dolorem quis soluta.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut commodi delectus dolore dolorem
+                xdoloremque dolores ducimus error explicabo fuga ipsam nemo, odio praesentium quo quod rerum voluptatibus! Quidem, voluptas.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, consectetur cum delectus dolor dolorem
+                dolorum earum eius ex impedit labore magni mollitia neque nihil omnis, quas quidem, reiciendis saepe voluptates?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor error illum minus necessitatibus nemo
+                nisi perferendis quibusdam rem temporibus. Aliquam ducimus eius hic nihil quas. A adipisci dolorem quis soluta.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut commodi delectus dolore dolorem
+                xdoloremque dolores ducimus error explicabo fuga ipsam nemo, odio praesentium quo quod rerum voluptatibus! Quidem, voluptas.Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, consectetur cum delectus dolor dolorem
+                dolorum earum eius ex impedit labore magni mollitia neque nihil omnis, quas quidem, reiciendis saepe voluptates?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor error illum minus necessitatibus nemo
+                nisi perferendis quibusdam rem temporibus. Aliquam ducimus eius hic nihil quas. A adipisci dolorem quis soluta.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut commodi delectus dolore dolorem
+                xdoloremque dolores ducimus error explicabo fuga ipsam nemo, odio praesentium quo quod rerum voluptatibus! Quidem, voluptas.Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, consectetur cum delectus dolor dolorem
+                dolorum earum eius ex impedit labore magni mollitia neque nihil omnis, quas quidem, reiciendis saepe voluptates?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor error illum minus necessitatibus nemo
+                nisi perferendis quibusdam rem temporibus. Aliquam ducimus eius hic nihil quas. A adipisci dolorem quis soluta.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At aut commodi delectus dolore dolorem
+                xdoloremque dolores ducimus error explicabo fuga ipsam nemo, odio praesentium quo quod rerum voluptatibus! Quidem, voluptas.
+              </Item.Description>
+
             </Item.Content>
           </Item>
         </Item.Group>

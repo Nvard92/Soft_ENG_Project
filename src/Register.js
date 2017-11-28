@@ -32,7 +32,7 @@ class Register extends Component {
 	  	var firstName = document.getElementById("firstName").value;
 	  	var lastName = document.getElementById("lastName").value;
 	  	var email = document.getElementById("email").value;
-	  	var emailReg = /\S+@\S+\.\S+/
+	  	var emailReg = /\S+@\S+\.\S+/;
 	  	if(userName==='' || firstName==='' || lastName==='' || email===''){
 	  		alert("Please fill all fields...!");
 	  		
@@ -50,7 +50,7 @@ class Register extends Component {
 		<div className="registerForm" >
 			<Segment inverted>
 
-				<Form  method="post" id="registerForm" onSubmit={this.submit.bind(this)} inverted  style="length: 50px" >
+				<Form  method="post" id="registerForm" onSubmit={this.submit.bind(this)} inverted >
 
 					<div className="formInput">
 						<Form.Input className="required field"  id ="userName"  label='User Name' placeholder='User name' />

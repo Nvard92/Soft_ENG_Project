@@ -8,12 +8,18 @@ import TapMovieCard from './TapMovieCard'
 // http://idangero.us/swiper/
 class TapMovieCollection extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
+            movies: props.movies
         }
 
+    }
+
+    componentWillReceiveProps(nextProps)
+    {
+        this.setState({movies: nextProps.movies});
     }
 
     componentDidMount() {
@@ -33,9 +39,18 @@ class TapMovieCollection extends Component {
     }
 
     render() {
+        var indents = [];
+        for (var i = 0; i < this.state.movies.length; i++) {
+            indents.push(
+                <div className='swiper-slide'>
+                    <TapMovieCard></TapMovieCard>
+                </div>
+            );
+        }
         return (
             <div className='swiper-container'>
                 <div className='swiper-wrapper'>
+                    {indents}
                     <div className='swiper-slide'>
                         <TapMovieCard rt='91' url='https://resizing.flixster.com/KW2O09dt3JjOO4RKeLY7pUYwm2M=/206x305/v1.bTsxMjU0NjIzNDtqOzE3NTE1OzEyMDA7MTY4ODsyNTAw'></TapMovieCard>
                     </div>
@@ -53,8 +68,8 @@ class TapMovieCollection extends Component {
                     </div>
                 </div>
 
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                <div className="swiper-button-next"></div>
+                <div className="swiper-button-prev"></div>
             </div>
         );
     }
