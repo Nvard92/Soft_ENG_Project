@@ -13,9 +13,8 @@ class TapMovieCollection extends Component {
         // console.log(props.movies);
         this.state = {
             movies: props.movies
-        }
-        // 
-
+        };
+        //
     }
 
     componentWillReceiveProps(nextProps)
@@ -37,7 +36,18 @@ class TapMovieCollection extends Component {
     }
 
     componentDidUpdate (prevProps) {
-
+        // if(this.siper) {
+        //     this.siper.update();
+        // }
+        this.siper = new Swiper('.swiper-container', {
+            slidesPerView: 2,
+            spaceBetween: 3,
+            loop: false,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
     }
 
     render() {
@@ -54,10 +64,10 @@ class TapMovieCollection extends Component {
                 <div className='swiper-wrapper'>
                     {indents}
                     </div>
-      
 
                 <div className="swiper-button-next"></div>
                 <div className="swiper-button-prev"></div>
+
             </div>
         );
     }
