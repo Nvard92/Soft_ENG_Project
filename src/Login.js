@@ -15,7 +15,8 @@ class Login extends Component{
 
 
 		var username = document.getElementById("userName").value;
-		var password = document.getElementById("pass").value;
+		var password = this.refs.password.value;
+		
 		if(username == ""){
     			alert("Please enter the User Name");
 		}
@@ -35,11 +36,39 @@ fetch('http://localhost:3000/login', {
     login: username,
    password: password,
   })
-})
+}).then(function(response){  if( response.status=='200' && response.ok == true) {
+	return response.json();
+} }).then( function(data){})
+
+*/
+
+/* or */
+/*var form = new FormData(document.getElementById('login-form'));
+fetch("/login", {
+  method: "POST",
+  body: form
+});*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		/*var request = new XMLHTTPRequest();
 		request.open('POST','URL', true,{username,password});
 		request.send();
-		request.addEventListener("readystatechange",requestHandler, false);
+		request.addEventListener("readystatechange",requestHandler, false);*/
 		/*if(request.readyState==4   && request.status==200) *//*  EVERYTHING IS COMPLETED AND SUCCESSFULLY*/
 			/* HERE WE MUST REDIRECT USER TO ITS PROFILE PAGE*/
 		/*{
@@ -55,7 +84,7 @@ fetch('http://localhost:3000/login', {
 	render(){
 		return (
 			<div style={{display: 'flex', justifyContent: 'center', }}>
-			<Segment inverted style={{ width: '50%', }}>
+			<Segment inverted style={{ width: '50%'}}>
 			
 
 				<Form id="loginForm" onSubmit={this.submit.bind(this)} inverted method='POST'>
@@ -63,13 +92,11 @@ fetch('http://localhost:3000/login', {
 					<div className="formInput">
 						<Form.Input id ="userName"   placeholder='User name' />
 						<div style={{}}>
-						<Password   id="password" placeholder='Password'
-  uppercase
-  lowercase
-  digits
+						<Password   ref="password" placeholder='Password' uppercase lowercase digits  className="password-input" />
   
-  className="password-input"
-/>
+  
+  
+
 </div>
 						
 					</div>
