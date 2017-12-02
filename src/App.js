@@ -12,11 +12,22 @@ import {
     Link,
     Switch
   } from 'react-router-dom';
+
   import Home from './Home'
   import Movies from './Movies'
   import NotFound from './NotFound'
   import Movie from './Movie'
+
+  import Register from './Register'
+  import Login from  './Login'
+  
+
+
+ 
+  
+
  import Person from './Person'
+
 
 import { Button, Icon } from 'semantic-ui-react'
 
@@ -34,9 +45,18 @@ class App extends Component {
                 <Route exact path="/home" component={Home}/>
                 <Route exact path="/movies" component={Movies}/>
                 <Route exact path="/movies/:movieId" component={Movie}/>
+
+                <Route exact path="/registration" component={Register}/>
+                <Route exact path="/login" component={Login}/>
+            
+               
                 <Route exact path="/persons/:personId" component={Person}/>
+
                 <Route exact component={NotFound} />
+
+
                 </Switch>
+                
              
           </Segment>
 
