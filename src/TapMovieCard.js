@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react'
+import TapConfig from './Config'
 
 class TapMovieCard extends Component {
 
@@ -28,7 +29,7 @@ class TapMovieCard extends Component {
 
     render() {
         return (
-            <Card href={this.state.link} >
+            <Card href={TapConfig.homepage + this.state.link} >
                 <Image src={this.props.posterUrl} />
                 <Card.Content>
                     <Card.Header>

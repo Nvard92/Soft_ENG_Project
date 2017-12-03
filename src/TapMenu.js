@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Menu, Image, Dropdown } from 'semantic-ui-react'
 import logo from './logo.png'
+import TapConfig from './Config'
 import { Link } from 'react-router-dom'
 
 class TapMenu extends Component {
@@ -29,14 +30,14 @@ class TapMenu extends Component {
     }
 
     render() {
-        var menuitem = (
+        var menuitemMovie = (
             <a className='browse item' onMouseOver={() => { this.openMovies()}}>
                 Movie
             </a>
         );
         if(this.state.shoulldOpenMovie) {
-            menuitem = (
-                <a href="/movies"
+            menuitemMovie = (
+                <a href={TapConfig.homepage + "/movies"}
                     className='browse item'
                    onMouseOver={() => { this.openMovies()} }
                    onMouseOut={ () => { this.closeMovies()} }
@@ -44,20 +45,26 @@ class TapMenu extends Component {
                     Movie
                 </a>);
         }
+        var menuitemTV = (
+            <a className='browse item' onMouseOver={() => { this.openMovies()}}>
+                TV Show
+            </a>
+        );
         return (
             <div className='ui stackable container menu inverted'>
                 <div className='item'>
-                    <a href="/home">
+                    <a href={TapConfig.homepage + "/home"}>
                         <Image src={logo}  size='small'/>
                     </a>
                 </div>
-                {menuitem}
+                {menuitemMovie}
+                {menuitemTV}
                 <div className='right menu inverted '>
                     <div className='item'>
-                        <a href='/login'>Login</a>
+                        <a href={TapConfig.homepage + '/login'}>Login</a>
                     </div>
                     <div className='item'>
-                        <a href='/register'>Register</a>
+                        <a href={TapConfig.homepage + '/register'}>Register</a>
                     </div>
 
                 </div>

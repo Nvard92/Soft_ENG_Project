@@ -23,5 +23,6 @@
   },
   "optionalDependencies": {
     "fsevents": "*"
-  }
+  },
+  "homepage": "/tap-movie"
 }

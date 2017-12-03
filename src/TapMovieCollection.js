@@ -55,7 +55,9 @@ class TapMovieCollection extends Component {
         for (var i = 0; i < this.state.movies.length; i++) {
             indents.push(
                 <div className='swiper-slide'>
-                    <TapMovieCard id={this.state.movies[i].movieId} name={this.state.movies[i].nameEng} rt={this.state.movies[i].rottenTomatoesRating} posterUrl={this.state.movies[i].posterUrl} releaseDate={this.state.movies[i].releaseDate} descriptionEng={this.state.movies[i].descriptionEng}></TapMovieCard>
+                    <TapMovieCard id={this.state.movies[i].movieId} name={this.state.movies[i].nameEng}
+                                  rt={this.state.movies[i].rottenTomatoesRating} posterUrl={this.state.movies[i].posterUrl}
+                                  releaseDate={this.state.movies[i].releaseDate} descriptionEng={this.state.movies[i].descriptionEng}></TapMovieCard>
                 </div>
             );
         }
