@@ -12,7 +12,7 @@ import {
     Link,
     Switch
   } from 'react-router-dom';
-
+import TapConfig from './Config'
   import Home from './Home'
   import Movies from './Movies'
   import NotFound from './NotFound'
@@ -41,16 +41,17 @@ class App extends Component {
           <TapMenu/>
           <Segment className='stackable container mainContent'>
             <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route exact path="/home" component={Home}/>
-                <Route exact path="/movies" component={Movies}/>
-                <Route exact path="/movies/:movieId" component={Movie}/>
+                <Route exact path= {TapConfig.homepage + "/"} component={Home}/>
+                <Route exact path={TapConfig.homepage + "/home"} component={Home}/>
+                <Route exact path={TapConfig.homepage + "/movies"} component={Movies}/>
+                <Route exact path={TapConfig.homepage + "/movies/:movieId"} component={Movie}/>
 
-                <Route exact path="/registration" component={Register}/>
-                <Route exact path="/login" component={Login}/>
+                <Route exact path={TapConfig.homepage + "/register"} component={Register}/>
+                <Route exact path={TapConfig.homepage + "/registration"} component={Register}/>
+                <Route exact path={TapConfig.homepage + "/login"} component={Login}/>
             
                
-                <Route exact path="/persons/:personId" component={Person}/>
+                <Route exact path={TapConfig.homepage + "/persons/:personId"} component={Person}/>
 
                 <Route exact component={NotFound} />
 

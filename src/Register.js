@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Segment, Form } from 'semantic-ui-react';
+import TapConfig from './Config';
+import $ from 'jquery';
+
 
 
 
@@ -28,17 +31,44 @@ class Register extends Component {
 	  }*/
 
 	  submit(){
-	  	var login = document.getElementById("login").value;
+	  	/*var login = this.refs.login.value;*/
+	  	var login=document.getElementById("login").value;
+	  	var password=document.getElementById("password").value;
 	  	var firstName = document.getElementById("firstName").value;
 	  	var lastName = document.getElementById("lastName").value;
 	  	var email = document.getElementById("email").value;
+
 	  	var emailReg = /\S+@\S+\.\S+/;
+
 	  	if(login==='' || firstName==='' || lastName==='' || email===''){
 	  		alert("Please fill all fields...!");
-	  		
+	  		return;
 	  	}  else if(!(email).match(emailReg)){
-	  		alert("Invalid email...!")
+	  		alert("Invalid email...!");
+	  		return ;
+
 	  	}
+
+
+
+
+		$.ajax
+		({
+            type: "POST",
+            url: TapConfig.apiURL + '/users/register',
+            data: JSON.stringify({
+
+                "login": login,
+
+                "password": password,
+                "firstName": firstName,
+                "lastName": lastName,
+                "email":email,
+            }),
+            contentType: 'application/json',
+            
+        })
+	 
 
 	
 	}
@@ -53,11 +83,11 @@ class Register extends Component {
 				<Form  method="post" id="registerForm" onSubmit={this.submit.bind(this)} inverted >
 
 					<div className="formInput">
-						<Form.Input className="required field"  id ="login "  label='User Name' placeholder='User name' />
+						<Form.Input className="required field"  ref ="login"  id="login" label='User Name' placeholder='User name' />
 						<Form.Input className="required field"  id ="firstName"  label='First name' placeholder='First name' />
 						<Form.Input className="required field"  id="lastName" label='Last name' placeholder='Last name' />
 						<Form.Input className="required field" type="email" id="email" label='Email' placeholder='Email' />
-						<Form.Input className="required field" type="password" label='Password' placeholder='Password' />
+						<Form.Input className="required field" type="password" id="password" label='Password' placeholder='Password' />
 						<Form.Input className="required field" type="password" label='Confirm Password' placeholder='Confirm Password' />
 					</div>
 					<br/>
