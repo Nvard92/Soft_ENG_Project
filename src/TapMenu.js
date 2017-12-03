@@ -32,7 +32,8 @@ class TapMenu extends Component {
         var menuitem = (
             <a className='browse item' onMouseOver={() => { this.openMovies()}}>
                 Movie
-            </a>);
+            </a>
+        );
         if(this.state.shoulldOpenMovie) {
             menuitem = (
                 <a href="/movies"
@@ -51,6 +52,15 @@ class TapMenu extends Component {
                     </a>
                 </div>
                 {menuitem}
+                <div className='right menu inverted '>
+                    <div className='item'>
+                        <a>Login</a>
+                    </div>
+                    <div className='item'>
+                        <a>Register</a>
+                    </div>
+
+                </div>
             </div>
         );
     }
