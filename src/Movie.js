@@ -86,19 +86,7 @@ class Movie extends Component {
 
              
               <Item.Description >
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. 
-                Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                 Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
-                  Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a,
-                   venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. 
-                   Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, 
-                   eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. 
-                   Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.
-                    Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel,
-                    luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. 
-                    Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. 
-                    ed consequat, leo eget bibendum sodales, augue velit cursus nunc,
-                
+                 {this.state.movie.nameEng}
               </Item.Description>
               
               <Item.Description>
@@ -134,7 +122,7 @@ class Movie extends Component {
                        <Grid.Row>
                       <Grid.Column mobile={16} fablet={8} computer={6}>
                         <h3>
-                              Acted in({this.state.actors.length})
+                              Actors({this.state.actors.length})
                           </h3>
                           <TapMovieItemCollection movies={this.state.actors} source="persons"/>
                           </Grid.Column>
@@ -145,7 +133,7 @@ class Movie extends Component {
                      
                       <Grid.Column mobile={16} fablet={8} computer={6}>
                         <h3>
-                              Producer in({this.state.producers.length})
+                              Producers({this.state.producers.length})
                           </h3>
                           <TapMovieItemCollection movies={this.state.producers} source="persons"/>
                           </Grid.Column>
@@ -155,7 +143,7 @@ class Movie extends Component {
                              <Grid.Row>
                       <Grid.Column mobile={16} fablet={8} computer={6}>
                         <h3>
-                              Director in({this.state.directors.length})
+                              Directors({this.state.directors.length})
                           </h3>
                           <TapMovieItemCollection movies={this.state.directors} source="persons"/>
                           </Grid.Column>

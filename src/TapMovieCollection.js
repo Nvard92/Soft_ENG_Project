@@ -12,7 +12,8 @@ class TapMovieCollection extends Component {
         super(props)
         // console.log(props.movies);
         this.state = {
-            movies: props.movies
+            movies: props.movies,
+            shows: props.shows
         };
         //
     }
@@ -20,7 +21,8 @@ class TapMovieCollection extends Component {
     componentWillReceiveProps(nextProps)
     {
         this.setState({movies: nextProps.movies});
-        // console.log(this.state.movies);
+     this.setState({shows: nextProps.shows});
+           // console.log(this.state.movies);
     }
 
     componentDidMount() {
@@ -52,12 +54,25 @@ class TapMovieCollection extends Component {
 
     render() {
         var indents = [];
+        if(this.state.movies!=null)
+        {
         for (var i = 0; i < this.state.movies.length; i++) {
             indents.push(
                 <div className='swiper-slide'>
-                    <TapMovieCard id={this.state.movies[i].movieId} name={this.state.movies[i].nameEng} rt={this.state.movies[i].rottenTomatoesRating} posterUrl={this.state.movies[i].posterUrl} releaseDate={this.state.movies[i].releaseDate} descriptionEng={this.state.movies[i].descriptionEng}></TapMovieCard>
+                    <TapMovieCard type="movie"  id={this.state.movies[i].movieId} name={this.state.movies[i].nameEng} rt={this.state.movies[i].rottenTomatoesRating} posterUrl={this.state.movies[i].posterUrl} releaseDate={this.state.movies[i].releaseDate} descriptionEng={this.state.movies[i].descriptionEng}></TapMovieCard>
                 </div>
             );
+        }
+        }
+        if(this.state.shows!=null)
+       {
+        for (var i = 0; i < this.state.shows.length; i++) {
+            indents.push(
+                <div className='swiper-slide'>
+                    <TapMovieCard type="tvshow" id={this.state.shows[i].movieId} name={this.state.shows[i].nameEng} rt={this.state.shows[i].rottenTomatoesRating} posterUrl={this.state.shows[i].posterUrl} releaseDate={this.state.shows[i].releaseDate} descriptionEng={this.state.shows[i].descriptionEng} ></TapMovieCard>
+                </div>
+            );
+        }
         }
         return (
             <div className='swiper-container'>

@@ -7,16 +7,28 @@ class TapMovieCard extends Component {
         url : '',
         rt: 0,
         releaseDate:'',
-        descriptionEng:''
+        descriptionEng:'',
+        type:''
 
     };
 
     constructor(props){
         super(props);
+var prefix="/movies/"
+console.log(this.props.type);
+if(this.props.type=="tvshow")
+{
+prefix="/tvshows/";
+}
+else if(this.props.type=="person")
+{
+    prefix="/persons/";
+}
+        console.log(prefix);
 
         this.state = {
             shoulldOpenMovies: true,
-              link:"/movies/"+this.props.id
+            link:prefix+this.props.id
         };
     }
 
