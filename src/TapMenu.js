@@ -54,10 +54,10 @@ class TapMenu extends Component {
                 {menuitem}
                 <div className='right menu inverted '>
                     <div className='item'>
-                        <a>Login</a>
+                        <a href='/login'>Login</a>
                     </div>
                     <div className='item'>
-                        <a>Register</a>
+                        <a href='/register'>Register</a>
                     </div>
 
                 </div>
