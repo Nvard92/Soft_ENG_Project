@@ -32,7 +32,7 @@ class App extends Component {
 
     getMovies()
     {
-        $.getJSON( TapConfig.apiURL + '/movies/?filter=rating')
+        $.getJSON( TapConfig.apiURL + '/movies/?filter=boxOffice')
             .done(function( data) {
                 this.setState({ movies: data })
                 console.log(this.state.movies);
@@ -51,9 +51,9 @@ class App extends Component {
 
     getShows()
     {
-        $.getJSON( TapConfig.apiURL + '/movies/')
+        $.getJSON( TapConfig.apiURL + '/tvshows/?filter=boxOffice')
             .done(function( data) {
-                this.setState({ movies: data })
+                this.setState({ shows: data })
             }.bind(this))
             .fail(function( jqxhr, textStatus, error ) {
                     if (error.indexOf("404") >=0) {
@@ -81,9 +81,9 @@ class App extends Component {
                       </Grid.Column>
                       <Grid.Column mobile={16} fablet={8} computer={6}>
                           <h3>
-                              TV Shows
+                              TV Shows ({this.state.shows.length})
                           </h3>
-                          <TapMovieCollection movies={this.state.shows}/>
+                          <TapMovieCollection shows={this.state.shows}/>
                       </Grid.Column>
                       <Grid.Column mobile={16} fablet={8} computer={4}>
                               <Item.Group divided>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react'
+import TapConfig from './Config'
 
 class TapMovieItem extends Component {
 
@@ -13,7 +14,7 @@ class TapMovieItem extends Component {
         super(props);
         this.state = {
             shoulldOpenMovies: true,
-            link:"/"+this.props.source+"/"+this.props.id
+            link: TapConfig.homepage + "/"+this.props.source+"/"+this.props.id
         };
     }
 
