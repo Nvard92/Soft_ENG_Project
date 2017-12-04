@@ -85,18 +85,24 @@ class Movie extends Component {
 
 
                     <Item.Description >
-                        {this.state.movie.nameEng}
+                       releaseDate: {this.state.movie.releaseDate}
+                    </Item.Description>
+
+  
+                    <Item.Description>
+                       rottenTomatoesRating: {this.state.movie.rottenTomatoesRating}
                     </Item.Description>
 
                     <Item.Description>
-                        {this.state.description}
+                       description: {this.state.description}
                     </Item.Description>
+
 
                 </Item.Content>
             </Item>
 
 
-            {this.state.actors.length > 0 &&
+            {this.state.actors!=null &&
             <Grid.Row>
                 <Grid.Column mobile={16} fablet={8} computer={6}>
                     <h3>
@@ -106,7 +112,7 @@ class Movie extends Component {
                 </Grid.Column>
             </Grid.Row>
             }
-            {this.state.producers.length > 0 &&
+            {this.state.producers!=null &&
             <Grid.Row>
 
                 <Grid.Column mobile={16} fablet={8} computer={6}>
@@ -117,7 +123,7 @@ class Movie extends Component {
                 </Grid.Column>
             </Grid.Row>
             }
-            {this.state.directors.length > 0 &&
+            {this.state.directors!=null &&
             <Grid.Row>
                 <Grid.Column mobile={16} fablet={8} computer={6}>
                     <h3>

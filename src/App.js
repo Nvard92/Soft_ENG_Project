@@ -12,11 +12,13 @@ import {
     Link,
     Switch
   } from 'react-router-dom';
-import TapConfig from './Config'
+  import TapConfig from './Config'
   import Home from './Home'
   import Movies from './Movies'
+  import TVShows from './TVShows'
   import NotFound from './NotFound'
   import Movie from './Movie'
+  import TVShow from './TVShow'
 
   import Register from './Register'
   import Login from  './Login'
@@ -44,7 +46,9 @@ class App extends Component {
                 <Route exact path= {TapConfig.homepage + "/"} component={Home}/>
                 <Route exact path={TapConfig.homepage + "/home"} component={Home}/>
                 <Route exact path={TapConfig.homepage + "/movies"} component={Movies}/>
+                <Route exact path={TapConfig.homepage + "/tvshows"} component={TVShows}/>
                 <Route exact path={TapConfig.homepage + "/movies/:movieId"} component={Movie}/>
+               <Route exact path={TapConfig.homepage + "/tvshows/:movieId"} component={TVShow}/>
 
                 <Route exact path={TapConfig.homepage + "/register"} component={Register}/>
                 <Route exact path={TapConfig.homepage + "/registration"} component={Register}/>
