@@ -70,7 +70,6 @@ class Register extends Component {
             data: JSON.stringify({
 
                 "login": login,
-
                 "password": password,
                 "firstName": firstName,
                 "lastName": lastName,
@@ -114,7 +113,15 @@ login(){
 					</div>
 					<br/>
 
-					<Form.Checkbox label='I agree to the Terms and Conditions' />
+					<Form.Checkbox /> 
+					<br/>
+					
+					<a style={{ color: '#f2f4f7'}} href="./termsOfConditions"> I agree with terms of conditions </a>
+					
+
+					<br/>
+					<br/>
+
 					<Button type='submit' method="post" id="registerForm" onSubmit={this.submit.bind(this)}>Register</Button>
 					<Button type='log in' onClick ={this.login.bind(this)}> Log In </Button>
 				</Form>

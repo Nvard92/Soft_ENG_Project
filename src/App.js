@@ -24,6 +24,7 @@ import {
   import Login from  './Login'
   import Profile from './Profile'
   import TapConfig from './Config'
+  import TermsOfConditions from './TermsOfConditions'
   import $ from 'jquery';
 import Cookies from 'universal-cookie';
 
@@ -47,7 +48,7 @@ class App extends Component {
 
       return;
     }
-    alert("df");
+    //alert("df");
 
     $.ajax
     ({
@@ -59,11 +60,11 @@ class App extends Component {
             success: function (data) {
               window.userInfo=JSON.parse(data);
 
-              alert(window.userInfo);
+              //alert(window.userInfo);
             },
             error: function(){
               window.userInfo=false;
-                alert("yg");
+               // alert("yg");
             }
         })
 
@@ -87,6 +88,7 @@ class App extends Component {
 
                 <Route exact path={TapConfig.homepage + "/register"} component={Register}/>
                 <Route exact path={TapConfig.homepage + "/registration"} component={Register}/>
+                <Route exact path={TapConfig.homepage + "/termsOfConditions"} component={TermsOfConditions}/>
                 <Route exact path={TapConfig.homepage + "/login"} component={Login}/>
                 <Route exact path={TapConfig.homepage + "/profile"} component = {Profile}/>
             
