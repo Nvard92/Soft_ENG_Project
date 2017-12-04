@@ -51,6 +51,17 @@ class Register extends Component {
 
 
 
+	  	var parameter=JSON.stringify({
+
+                "login": login,
+
+                "password": password,
+                "firstName": firstName,
+                "lastName": lastName,
+                "email":email,
+            });
+
+	  	console.log(parameter);
 
 		$.ajax
 		({
@@ -66,13 +77,24 @@ class Register extends Component {
                 "email":email,
             }),
             contentType: 'application/json',
-            
+            success: function (data) {
+            	
+            	window.location.href='/tap-movie/home';
+           },
+            /*error: function(){
+                alert('error');
+            }*/
         })
 	 
 
 	
 	}
 
+login(){
+	/* redirect to login page*/
+	window.location.href='/tap-movie/login';
+	
+}
 
 	 
 	render(){
@@ -80,10 +102,10 @@ class Register extends Component {
 		<div className="registerForm" >
 			<Segment inverted>
 
-				<Form  method="post" id="registerForm" onSubmit={this.submit.bind(this)} inverted >
+				<Form   inverted >
 
 					<div className="formInput">
-						<Form.Input className="required field"  ref ="login"  id="login" label='User Name' placeholder='User name' />
+						<Form.Input className="required field"   id="login" label='User Name' placeholder='User name' />
 						<Form.Input className="required field"  id ="firstName"  label='First name' placeholder='First name' />
 						<Form.Input className="required field"  id="lastName" label='Last name' placeholder='Last name' />
 						<Form.Input className="required field" type="email" id="email" label='Email' placeholder='Email' />
@@ -93,8 +115,8 @@ class Register extends Component {
 					<br/>
 
 					<Form.Checkbox label='I agree to the Terms and Conditions' />
-					<Button type='submit'>Register</Button>
-					<Button type='log in'> Log In </Button>
+					<Button type='submit' method="post" id="registerForm" onSubmit={this.submit.bind(this)}>Register</Button>
+					<Button type='log in' onClick ={this.login.bind(this)}> Log In </Button>
 				</Form>
 
 			</Segment>
