@@ -2,3 +2,7 @@
 .swiper-button-disabled{
     visibility: hidden;
 }
+.swiper-slide
+{
+    width: 50%;
+}

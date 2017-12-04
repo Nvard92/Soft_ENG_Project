@@ -32,7 +32,6 @@ class Login extends Component{
             }),
             contentType: 'application/json',
             success: function (data) {
-                
                 const cookies = new Cookies();
 
                 cookies.set('token', JSON.parse(data).token, { path: '/' });
@@ -46,7 +45,9 @@ class Login extends Component{
         })
 
 
+
         	} 
+
 
 	render(){
 		return (
@@ -55,9 +56,14 @@ class Login extends Component{
 					<Form id="loginForm" onSubmit={this.submit.bind(this)} inverted method='POST'>
 						<div className="formInput">
 							<Form.Input id ="userName"   placeholder='User name' />
+
 							
 								<Form.Input id='userPass' placeholder='Password' type="password" className="password-input" />
 							
+
+							
+								
+
 						</div>
 						<br/>
 						<Button type='submit'> Log In </Button>
