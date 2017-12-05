@@ -32,20 +32,22 @@ class Login extends Component{
             }),
             contentType: 'application/json',
             success: function (data) {
-                if (data.success == 404) {
-                    alert("wrong username or password")
-                }
                 const cookies = new Cookies();
 
-                cookies.set('shbasdfg', JSON.parse(data).token, { path: '/' });
-                var token = cookies.get('shbasdfg');
+                cookies.set('token', JSON.parse(data).token, { path: '/' });
+                window.location.href='/tap-movie/home';
+                //var token = cookies.get('token');
                 //alert("Data: " + token);
             },
             error: function(){
                 alert('wrong username or password');
             }
         })
-	} 
+
+
+
+        	} 
+
 
 	render(){
 		return (
@@ -54,9 +56,14 @@ class Login extends Component{
 					<Form id="loginForm" onSubmit={this.submit.bind(this)} inverted method='POST'>
 						<div className="formInput">
 							<Form.Input id ="userName"   placeholder='User name' />
-							<div style={{}}>
+
+							
 								<Form.Input id='userPass' placeholder='Password' type="password" className="password-input" />
-							</div>
+							
+
+							
+								
+
 						</div>
 						<br/>
 						<Button type='submit'> Log In </Button>

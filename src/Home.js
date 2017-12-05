@@ -13,7 +13,7 @@ import TapConfig from './Config'
 import { Button, Icon } from 'semantic-ui-react'
 
 class App extends Component {
-	
+  
     constructor(props)
     {
         super(props);
