@@ -20,7 +20,8 @@ class App extends Component {
 
         this.state = {
             movies: [],
-            shows: []
+            shows: [],
+            books:[]
         };
     }
 
@@ -28,6 +29,7 @@ class App extends Component {
     {
         this.getMovies();
         this.getShows();
+        this.getBooks();
     }
 
     getMovies()
@@ -67,6 +69,25 @@ class App extends Component {
             );
     }
 
+ getBooks()
+    {
+        $.getJSON( TapConfig.apiURL + '/books/?filter=year&start=20&count=10')
+            .done(function( data) {
+                this.setState({ books: data });
+                 
+                console.log(data);
+            }.bind(this))
+            .fail(function( jqxhr, textStatus, error ) {
+                    if (error.indexOf("404") >=0) {
+                        this.setState({ notFound: true })
+                    }
+                    else {
+                        var err = textStatus + ", " + error;
+                        console.log( "Request Failed: " + err );
+                    }
+                }.bind(this)
+            );
+    }
 
   render() {
         // alert(this.state.movies.length);
@@ -87,12 +108,12 @@ class App extends Component {
                       </Grid.Column>
                       <Grid.Column mobile={16} fablet={8} computer={4}>
                               <Item.Group divided>
-                                  {_.times(10, i => (
+                                  {_.times(this.state.books.length, i => (
                                       <Item key={i}>
-                                          <Item.Image className='smallPoster' size='tiny' src='https://resizing.flixster.com/DuJ2ZNPN2YCaj8anWU6MQn22Vjo=/206x305/v1.dDsyMTU1MzM7ajsxNzQ3ODsxMjAwOzY0ODs5NjA' />
+                                          <Item.Image className='smallPoster' size='tiny' src={this.state.books[i].coverURL} />
                                           <Item.Content>
-                                              <Item.Header as='a'>Some Movie</Item.Header>
-                                              <Item.Meta>By Author</Item.Meta>
+                                              <Item.Header as='a'>{this.state.books[i].nameEng}</Item.Header>
+                                              <Item.Meta>{this.state.books[i].writers[0].name}</Item.Meta>
                                           </Item.Content>
                                       </Item>
                                   ))}

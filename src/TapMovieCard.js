@@ -25,7 +25,7 @@ else if(this.props.type=="person")
 {
     prefix="/persons/";
 }
-        console.log(prefix);
+        // console.log(prefix);
 
         this.state = {
             shoulldOpenMovies: true,

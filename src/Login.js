@@ -59,7 +59,7 @@ class Login extends Component{
 
 							
 								<Form.Input id='userPass' placeholder='Password' type="password" className="password-input" />
-							
+					
 
 							
 								

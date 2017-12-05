@@ -13,6 +13,7 @@ import {
 import NotFound from './NotFound'
 import TapConfig from './Config'
 import TapMovieItemCollection from './TapMovieItemCollection'
+import Cookies from 'universal-cookie';
 class Movie extends Component {
 
   constructor(props) {
@@ -58,7 +59,43 @@ class Movie extends Component {
             );
     }
 
-  
+  addReview(){
+        var rating = document.getElementById("rating").value;
+        // var rating = $('#rating').rating('get rating');
+        var review = document.getElementById("review").value;
+        console.log("rating:"+rating+"--review:"+review);
+        const cookies = new Cookies();
+        var token= cookies.get('token');
+        console.log(token);
+        $.ajax
+        ({
+            type: "POST",
+            url: TapConfig.apiURL + '/me/review',
+            data: JSON.stringify({
+                "rating": rating,
+                "review": review,
+                "movieId":this.props.match.params.movieId
+            }),
+            headers: {
+            token: token,
+         }   ,
+            contentType: 'application/json',
+            success: function (data) {
+            
+                
+                // window.location.href='/tap-movie/home';
+                //var token = cookies.get('token');
+                //alert("Data: " + token);
+            },
+            error: function(){
+                alert('wrong username or password');
+            }
+        })
+
+
+
+} 
+
   getReviews()
     {
         $.getJSON( TapConfig.apiURL + '/movies/'+this.props.match.params.movieId+"/reviews")
@@ -156,12 +193,12 @@ class Movie extends Component {
             }
 
 
-    <Comment.Group >
+      <Comment.Group >
     <Header as='h3' dividing>Reviews</Header>
   <Form reply>
-      <Form.TextArea />
-      <Rating icon='star' defaultRating={3} maxRating={5}/>
-      <Button content='Add Review' labelPosition='left' icon='edit' primary />
+      <Form.TextArea id="review"/>
+      <Rating icon='star' name="rating" id="rating" defaultRating={-1} maxRating={5}/>
+      <Button content='Add Review' onClick={this.addReview.bind(this)} labelPosition='left' icon='edit' primary />
     </Form>
 
  {_.times(this.state.reviews.length, i => (
