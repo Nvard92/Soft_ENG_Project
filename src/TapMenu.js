@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Menu, Image, Dropdown } from 'semantic-ui-react'
+import { Menu, Image, Dropdown, Button } from 'semantic-ui-react'
 import logo from './logo.png'
 import TapConfig from './Config'
+import Cookies from 'universal-cookie';
+
 import { Link } from 'react-router-dom'
 
 class TapMenu extends Component {
@@ -27,6 +29,13 @@ class TapMenu extends Component {
 
     onClickMovie()
     {
+    }
+
+    logout() {
+        const cookies = new Cookies();
+
+        cookies.set('token', "");
+        alert("ok");
     }
 
     render() {
@@ -60,11 +69,15 @@ class TapMenu extends Component {
                 {menuitemMovie}
                 {menuitemTV}
                 <div className='right menu inverted '>
+                    
+                    <div className='item'>
+                        <a href={TapConfig.homepage + '/register'}>Register</a>
+                    </div>
                     <div className='item'>
                         <a href={TapConfig.homepage + '/login'}>Login</a>
                     </div>
                     <div className='item'>
-                        <a href={TapConfig.homepage + '/register'}>Register</a>
+                        <a href="#" onClick= {this.logout.bind(this)}>Logout</a>
                     </div>
 
                 </div>

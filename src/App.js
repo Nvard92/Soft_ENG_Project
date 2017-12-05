@@ -22,6 +22,7 @@ import {
 
   import Register from './Register'
   import Login from  './Login'
+  
   import Profile from './Profile'
   import TapConfig from './Config'
   import TermsOfConditions from './TermsOfConditions'
@@ -46,9 +47,10 @@ class App extends Component {
     var token = cookies.get('token');
     if(token=="" || token==undefined){
 
+//alert(token);
       return;
     }
-    //alert("df");
+    //alert(token);
 
     $.ajax
     ({
@@ -90,6 +92,7 @@ class App extends Component {
                 <Route exact path={TapConfig.homepage + "/registration"} component={Register}/>
                 <Route exact path={TapConfig.homepage + "/termsOfConditions"} component={TermsOfConditions}/>
                 <Route exact path={TapConfig.homepage + "/login"} component={Login}/>
+
                 <Route exact path={TapConfig.homepage + "/profile"} component = {Profile}/>
             
                

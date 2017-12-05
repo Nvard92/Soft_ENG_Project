@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Segment, Form, View } from 'semantic-ui-react';
-import './Login.css';
-// import Password from 'try-react-password-input'
+
 import $ from 'jquery';
 import TapConfig from './Config'
 import Cookies from 'universal-cookie';
@@ -32,10 +31,15 @@ class Login extends Component{
             }),
             contentType: 'application/json',
             success: function (data) {
+
+            	if(data.success==404){
+            		alert('wrong username or password');
+            	}
                 const cookies = new Cookies();
 
                 cookies.set('token', JSON.parse(data).token, { path: '/' });
                 window.location.href='/tap-movie/home';
+
                 //var token = cookies.get('token');
                 //alert("Data: " + token);
             },
@@ -59,8 +63,6 @@ class Login extends Component{
 
 							
 								<Form.Input id='userPass' placeholder='Password' type="password" className="password-input" />
-							
-
 							
 								
 
