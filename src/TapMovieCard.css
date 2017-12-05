@@ -1,0 +1,19 @@
+.Card.Description {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.mainContent{
+  flex: 1;
+}
+
+.smallPoster {
+  display: block;
+  max-width:230px;
+  max-height:95px;
+  width: auto;
+  height: auto;
+}
