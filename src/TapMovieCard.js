@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react'
 import TapConfig from './Config'
-
+import './TapMovieCard.css'
 class TapMovieCard extends Component {
 
     static defaultProps = {

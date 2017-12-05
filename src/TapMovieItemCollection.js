@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Swiper from 'swiper/dist/js/swiper.min'
 import 'swiper/dist/css/swiper.min.css'
-import './TapMovieCollection.css'
+import './TapMovieItemCollection.css'
 import TapMovieItem from './TapMovieItem'
 
 
@@ -24,7 +24,7 @@ class TapMovieItemCollection extends Component {
 
     componentDidMount() {
         this.siper = new Swiper('.swiper-container', {
-            slidesPerView: 4,
+            slidesPerView: 3,
             spaceBetween: 1,
             loop: false,
             navigation: {
@@ -35,7 +35,18 @@ class TapMovieItemCollection extends Component {
     }
 
     componentDidUpdate (prevProps) {
-
+        // if(this.siper) {
+        //     this.siper.update();
+        // }
+        this.siper = new Swiper('.swiper-container', {
+            slidesPerView: 3,
+            spaceBetween: 1,
+            loop: false,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
     }
 
     render() {
