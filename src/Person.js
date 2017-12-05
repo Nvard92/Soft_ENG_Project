@@ -53,8 +53,7 @@ class Person extends Component {
         $.getJSON( TapConfig.apiURL + '/persons/'+this.props.match.params.personId)
             .done(function( data) {
               console.log(data[0]);
-              if(data[0].photoURL[data[0].photoURL.length-1]=='\'')
-                data[0].photoURL[data[0].photoURL.length-1]='';
+          
                 this.setState( {personData: data[0]} );
                 this.setState({actor:data[0].actor})
                 this.setState({director:data[0].director})

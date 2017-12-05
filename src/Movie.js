@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './Movies.css';
+import './Movie.css';
 import TapMenu from './TapMenu'
 import TapFooter from './TapFooter'
 import TapMovieCollection from './TapMovieCollection'
 import TapSidebarCollection from './TapSidebarCollection'
-import { Segment, Grid, Sticky, Item } from 'semantic-ui-react'
+import { Segment, Grid, Sticky, Item , Button, Comment, Form, Header, Rating} from 'semantic-ui-react'
 import _ from 'lodash'
 import $ from 'jquery'; 
 import {
@@ -20,7 +20,7 @@ class Movie extends Component {
 
     this.state = {movie: {URL: 'https://resizing.flixster.com/aJZN0ldw_MkUfzfU8mR6McoovG0=/206x305/v1.bTsxMjU2MjE4MDtqOzE3NTE1OzEyMDA7NTE1MDs3NjA2', 
                           name: 'Blind'
-                           }, actors:{}, directors:{}, writers:{}, producers:{},
+                           }, actors:{}, directors:{}, writers:{}, producers:{}, reviews:{},
         description:"",
       notFound: false
     };
@@ -30,6 +30,7 @@ class Movie extends Component {
     componentDidMount()
     {
         this.getMovieInfo();
+        this.getReviews();
      
     }
 
@@ -58,7 +59,25 @@ class Movie extends Component {
     }
 
   
-
+  getReviews()
+    {
+        $.getJSON( TapConfig.apiURL + '/movies/'+this.props.match.params.movieId+"/reviews")
+            .done(function( data) {
+                   console.log(data);
+             this.setState({reviews:data})
+               
+            }.bind(this))
+            .fail(function( jqxhr, textStatus, error ) {
+                    if (error.indexOf("404") >=0) {
+                        this.setState({ notFound: true })
+                    }
+                    else {
+                        var err = textStatus + ", " + error;
+                        console.log( "Request Failed: " + err );
+                    }
+                }.bind(this)
+            );
+    }
    
 
   render() {
@@ -73,6 +92,7 @@ class Movie extends Component {
    
 
     return (
+    <div>
         <Item.Group>
 
             <Item >
@@ -100,9 +120,10 @@ class Movie extends Component {
 
                 </Item.Content>
             </Item>
+   </Item.Group>
+   
 
-
-            {this.state.actors!=null &&
+            {this.state.actors!=null && this.state.actors.length>0 &&
             <Grid.Row>
                 <Grid.Column mobile={16} fablet={8} computer={6}>
                     <h3>
@@ -112,7 +133,7 @@ class Movie extends Component {
                 </Grid.Column>
             </Grid.Row>
             }
-            {this.state.producers!=null &&
+            {this.state.producers!=null &&this.state.producers.length>0 &&
             <Grid.Row>
 
                 <Grid.Column mobile={16} fablet={8} computer={6}>
@@ -123,7 +144,7 @@ class Movie extends Component {
                 </Grid.Column>
             </Grid.Row>
             }
-            {this.state.directors!=null &&
+            {this.state.directors!=null && this.state.directors.length>0 &&
             <Grid.Row>
                 <Grid.Column mobile={16} fablet={8} computer={6}>
                     <h3>
@@ -133,7 +154,33 @@ class Movie extends Component {
                 </Grid.Column>
             </Grid.Row>
             }
-        </Item.Group>
+
+
+    <Comment.Group >
+    <Header as='h3' dividing>Reviews</Header>
+  <Form reply>
+      <Form.TextArea />
+      <Rating icon='star' defaultRating={3} maxRating={5}/>
+      <Button content='Add Review' labelPosition='left' icon='edit' primary />
+    </Form>
+
+ {_.times(this.state.reviews.length, i => (
+                                 
+    <Comment>
+      <Comment.Content>
+        <Comment.Author as='a'>{this.state.reviews[i].userName}</Comment.Author>
+        <Comment.Metadata>
+         <Rating icon='star' defaultRating={this.state.reviews[i].rating} maxRating={5} disabled/>
+        </Comment.Metadata>
+        <Comment.Text>{this.state.reviews[i].review}</Comment.Text>
+        
+      </Comment.Content>
+    </Comment>
+     ))}
+    </Comment.Group>
+ 
+     </div>
+
     );
   }
 }
