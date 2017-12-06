@@ -13,7 +13,8 @@ import {
 import NotFound from './NotFound'
 import TapConfig from './Config'
 import TapMovieItemCollection from './TapMovieItemCollection'
-import Cookies from 'universal-cookie';
+import ReviewCollection from './ReviewCollection'
+
 class Movie extends Component {
 
   constructor(props) {
@@ -59,42 +60,7 @@ class Movie extends Component {
             );
     }
 
-  addReview(){
-        var rating = document.getElementById("rating").value;
-        // var rating = $('#rating').rating('get rating');
-        var review = document.getElementById("review").value;
-        console.log("rating:"+rating+"--review:"+review);
-        const cookies = new Cookies();
-        var token= cookies.get('token');
-        console.log(token);
-        $.ajax
-        ({
-            type: "POST",
-            url: TapConfig.apiURL + '/me/review',
-            data: JSON.stringify({
-                "rating": rating,
-                "review": review,
-                "movieId":this.props.match.params.movieId
-            }),
-            headers: {
-            token: token,
-         }   ,
-            contentType: 'application/json',
-            success: function (data) {
-            
-                
-                // window.location.href='/tap-movie/home';
-                //var token = cookies.get('token');
-                //alert("Data: " + token);
-            },
-            error: function(){
-                alert('wrong username or password');
-            }
-        })
-
-
-
-} 
+  
 
   getReviews()
     {
@@ -191,31 +157,8 @@ class Movie extends Component {
                 </Grid.Column>
             </Grid.Row>
             }
+            <ReviewCollection movieId={this.props.match.params.movieId} source="movies"/>
 
-
-      <Comment.Group >
-    <Header as='h3' dividing>Reviews</Header>
-  <Form reply>
-      <Form.TextArea id="review"/>
-      <Rating icon='star' name="rating" id="rating" defaultRating={-1} maxRating={5}/>
-      <Button content='Add Review' onClick={this.addReview.bind(this)} labelPosition='left' icon='edit' primary />
-    </Form>
-
- {_.times(this.state.reviews.length, i => (
-                                 
-    <Comment>
-      <Comment.Content>
-        <Comment.Author as='a'>{this.state.reviews[i].userName}</Comment.Author>
-        <Comment.Metadata>
-         <Rating icon='star' defaultRating={this.state.reviews[i].rating} maxRating={5} disabled/>
-        </Comment.Metadata>
-        <Comment.Text>{this.state.reviews[i].review}</Comment.Text>
-        
-      </Comment.Content>
-    </Comment>
-     ))}
-    </Comment.Group>
- 
      </div>
 
     );

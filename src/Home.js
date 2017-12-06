@@ -107,6 +107,9 @@ class App extends Component {
                           <TapMovieCollection shows={this.state.shows}/>
                       </Grid.Column>
                       <Grid.Column mobile={16} fablet={8} computer={4}>
+                      <h3>
+                              Books ({this.state.books.length})
+                          </h3>
                               <Item.Group divided>
                                   {_.times(this.state.books.length, i => (
                                       <Item key={i}>

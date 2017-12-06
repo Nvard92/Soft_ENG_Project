@@ -35,7 +35,7 @@ class Login extends Component{
                 const cookies = new Cookies();
 
                 cookies.set('token', JSON.parse(data).token, { path: '/' });
-                window.location.href='/tap-movie/home';
+                window.location.href='/home';
                 //var token = cookies.get('token');
                 //alert("Data: " + token);
             },
